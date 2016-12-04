@@ -1,0 +1,54 @@
+﻿@model MVC2.Models.Guestbooks
+
+@{
+    ViewBag.Title = "Reply";
+}
+
+<h2>Reply</h2>
+
+
+@using (Html.BeginForm())
+{
+    <h3>回覆留言</h3>
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(p => p.Name)
+            </td>
+            <td>
+                @Html.LabelFor(p => p.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(p => p.Content)
+            </td>
+            <td>
+                @Html.LabelFor(p => p.Content)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(p => p.Reply)
+            </td>
+            <td>
+                @Html.TextBoxFor(p => p.Reply)
+            </td>
+        </tr>
+
+    </table>
+
+    if (Model.ReplyTime == null)
+    {
+        <input type="submit" value="回覆留言" />
+    }
+    else
+    {
+        <text>此留言已回覆無法修改，請</text>
+        @Html.ActionLink("返回列表", "Index")
+    }
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,75 @@
+﻿@model MVC2.ViewModels.GuestbooksView
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.Action("Create","Guestbook")
+
+
+@if (!Model.DataList.Count.Equals(0))
+{
+    foreach (var Item in Model.DataList)
+    {
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DataList[0].Name)
+            </td>
+            <td>
+                @Item.Name
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DataList[0].CreateTime)
+            </td>
+            <td>
+                @Item.CreateTime
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DataList[0].Content)
+            </td>
+            <td colspan="3">
+                @Item.Content
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DataList[0].Reply)
+            </td>
+            <td colspan="3">
+                @Item.Reply
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DataList[0].ReplyTime)
+            </td>
+            <td >
+                @Item.ReplyTime
+            </td>
+           
+        </tr>
+
+    }
+}
+else
+{
+ <tr>
+     <td colspan="4">
+         資料庫無資料
+     </td>
+ </tr>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
